@@ -1,0 +1,38 @@
+#%RAML 1.0
+title: vitech-bank-customer
+protocols:
+  - HTTP
+  - HTTPS
+securitySchemes:
+  Secure: !include SecuritySchema/securityScheme.raml
+
+securedBy:
+  - Secure
+/createAccount:
+  post:
+    description: to create an account in bank
+    queryParameters:
+      customerName:
+        maxLength: 45
+        minLength: 4
+      bank:
+        enum:
+          - ICICI
+          - AXIS
+          - HDFC
+      type:
+        enum:
+          - Savings
+          - Current
+      branchName:
+        minLength: 4
+        maxLength: 10
+    body:
+      application/json:
+        type: !include /DataTypes/inputDataType.raml
+        example: !include Examples/inputRequestExample.raml
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include Examples/SuccessResponseExample.raml

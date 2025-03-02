@@ -1,0 +1,16 @@
+Email:
+ config:
+  host: "smtp.gmail.com"
+  port: "587"
+  user: "anaghavyas30@gmail.com"
+  password: "qwbxtvvcsogqvala"
+ 
+deployment:
+  app:
+    runtime: "4.4.0"
+  region: "us-east-1"
+  workers: "1"
+  workerType: "MICRO"
+  
+http:
+  port: "8081"
